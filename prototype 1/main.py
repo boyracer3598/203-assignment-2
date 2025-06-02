@@ -38,6 +38,19 @@ def index():
 def greet(name):
     return render_template('greet.html', user_name=name)
 
+# for games
+@app.route('/games')
+def games():
+    return render_template('games.html')
+
+count = 0
+#for clicker game
+@app.route('/games', methods=['POST'])
+def increment():
+    global count
+    count += 1
+    return render_template('games.html', count=count)
+
 #run the application
 if __name__ == '__main__':
     app.run(debug=True)
