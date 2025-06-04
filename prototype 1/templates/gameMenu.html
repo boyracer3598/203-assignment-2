@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        <form action="/clicker" method="post">
+        <button type="submit">clicker</button>
+        </form>
+        <form action="/spinner" method="post">
+            <button type="submit">Spinner</button>
+        </form>
+        <form action="/squish" method="post">
+            <button type="submit">Squish</button>
+        </form>
+        <form action="/balloon" method="post">
+            <button type="submit">Balloon</button>
+        </form>
+        <!-- need user not default value -->
+        <form action="/greet/cole" method="post">
+            <button type="submit">Back</button>
+        </form>
+
+        
+    </body>
+</html>

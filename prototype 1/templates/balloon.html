@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        <script src="/static/script.js"></script>
+    </head>
+    <body>
+        <img src="/static/images/balloon1.png" id="Image-balloon" style="width: 200px; height: 200px;" onclick="popBalloon()">
+        <button onclick="resetBalloon()">Reset Balloon</button>
+        <form action="/games" method="post">
+            <button type="submit">Back to Menu</button>
+        </form>
+        
+    </body>
+</html>

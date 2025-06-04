@@ -34,22 +34,36 @@ def index():
         message = ""
     return render_template("index.html", message=message)
 
-@app.route('/greet/<name>')
+@app.route('/greet/<name>',methods=['GET', 'POST'])
 def greet(name):
     return render_template('greet.html', user_name=name)
 
+
+# game stuff
 # for games
-@app.route('/games')
+@app.route('/games', methods=['GET', 'POST'])
 def games():
-    return render_template('games.html')
+    return render_template('gameMenu.html')
 
 count = 0
 #for clicker game
-@app.route('/games', methods=['POST'])
+@app.route('/clicker', methods=['POST'])
 def increment():
     global count
     count += 1
-    return render_template('games.html', count=count)
+    return render_template('clicker.html', count=count)
+
+@app.route('/spinner',methods=['GET', 'POST'])
+def spinner():
+    return render_template('spinner.html')
+
+@app.route('/squish',methods=['GET', 'POST'])
+def squish():
+    return render_template('squish.html')
+
+@app.route('/balloon', methods=['GET', 'POST'])
+def ballon():
+    return render_template('balloon.html')
 
 #run the application
 if __name__ == '__main__':
