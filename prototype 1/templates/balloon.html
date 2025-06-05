@@ -9,8 +9,13 @@
         <script src="/static/script.js"></script>
     </head>
     <body>
-        <img src="/static/images/balloon1.png" id="Image-balloon" style="width: 200px; height: 200px;" onclick="popBalloon()">
-        <button onclick="resetBalloon()">Reset Balloon</button>
+        <div class="center-div"> 
+            <img src="/static/images/balloon1.png" id="Image-balloon" style="width: 200px; height: 200px;" onclick="popBalloon()">
+        </div>
+        <form>  
+            <button onclick="resetBalloon()">Reset Balloon</button>
+        </form>
+        
         <form action="/games" method="post">
             <button type="submit">Back to Menu</button>
         </form>
