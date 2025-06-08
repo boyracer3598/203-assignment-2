@@ -45,26 +45,38 @@ def greet(name):
 def games():
     return render_template('gameMenu.html')
 
-count = 0
+
 #for clicker game
+count = 0
 @app.route('/clicker', methods=['POST'])
 def increment():
     global count
     count += 1
     return render_template('clicker.html', count=count)
 
+# fidget spinner fidget
 @app.route('/spinner',methods=['GET', 'POST'])
 def spinner():
     return render_template('spinner.html')
 
+# for squish fidget
 @app.route('/squish',methods=['GET', 'POST'])
 def squish():
     return render_template('squish.html')
 
+# for balloon pop fidget
 @app.route('/balloon', methods=['GET', 'POST'])
 def ballon():
     return render_template('balloon.html')
 
+# page for logging your mood
+@app.route('/mood', methods=['GET', 'POST'])
+def mood():
+    if request.method == 'POST':
+        pass
+    return render_template('mood.html')
+
 #run the application
 if __name__ == '__main__':
     app.run(debug=True)
+
