@@ -1,0 +1,234 @@
+@media only screen and (max-width: 1000px) {
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url('images/pink_alpha.png');
+        margin: 0;
+        padding: 0;
+        color: #212529;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        
+    }
+    h1 {
+        font-size: 24px;
+        color: #000000;
+        text-align: center;
+        padding: 2px;
+        border-bottom: 2px solid #0056b3;
+
+    }
+    p {
+        font-size: 16px;
+        text-align: center;
+        color: #495057;
+        
+    }
+    .container {
+        padding: 2px;
+        margin: 5px 20px 20px 20px;
+        background-color: #ffffff;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+
+    }
+    #submit_button {
+        align-content: center;
+        background-image: url('images/submit.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position-x: center;
+        border: none;
+        padding: 30px 60px 30px 60px;
+        margin: 5px 15px;
+        border-radius: 15px;
+        cursor: pointer;
+        font-size: 1.4em;
+        min-width: 190px;
+        max-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-image: url('images/login_block.png');
+        margin: 2px 700px 5px 700px;
+        padding: 50px 100px;
+        border-radius: 35px;
+    }
+
+    input[type="text"] {
+        padding: 10px;
+        border: 3px solid #999999;
+        border-radius: 10px;
+        margin-right: 10px;
+    }
+
+    input[type="password"] {
+        padding: 10px;
+        border: 3px solid #999999;
+        border-radius: 10px;
+        margin-right: 10px;
+    }
+
+    label {
+        margin-right: 10px;
+        font-size: 1.2em;
+    }
+
+    .flash-messages {
+        margin-bottom: 5px;
+        align-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        width: 40%;
+    }
+
+    .flash-message {
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        font: 120% sans-serif;
+        text-align: center;
+    }
+
+    .flash-message.error {
+        background-color: #ffebee;
+        color: #d32f2f;
+        border: 1px solid #ffcdd2;
+    }
+
+}
+
+@media only screen and (min-width: 601px){
+    body {
+    font-family: Arial, sans-serif;
+    background-image: url('images/pink_alpha.png');
+    margin: 0;
+    padding: 0;
+    color: #212529;
+    }
+
+   
+
+    h1 {
+        color: #000000;
+        text-align: center;
+        padding: 2px;
+        font-size: 40px;
+        margin: 20px 10px 20px 10px;
+        
+    }
+
+    p {
+        text-align: center;
+        font-size: 1.2em;
+        color: #495057;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #ffffff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        margin-top: 50px;
+    }
+
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        size: 300px 450px;
+        justify-content: center;
+        scale: 1.2;
+        background-image: url('images/login_block.png');
+        background-size: 300px 450px;
+        background-repeat: no-repeat;
+        background-position-x: center;
+        margin: 70px 700px 5px 700px;
+        padding: 30px 100px;
+        border-radius: 35px;
+
+        
+    }
+
+    input[type="text"] {
+        padding: 10px;
+        border: 1px solid #ced4da;
+        border-radius: 10px;
+        margin-right: 10px;
+    }
+
+    input[type="password"] {
+        padding: 10px;
+        border: 1px solid #ced4da;
+        border-radius: 10px;
+        margin-right: 10px;
+    }
+
+    label {
+        margin-right: 10px;
+        font-size: 1.2em;
+    }
+
+    .flash-messages {
+        margin-bottom: 20px;
+        align-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        width: 40%;
+    }
+
+    .flash-message {
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        font: 140% sans-serif;
+        text-align: center;
+    }
+
+    .flash-message.error {
+        background-color: #ffebee;
+        color: #d32f2f;
+        border: 1px solid #ffcdd2;
+    }
+
+    #submit_button {
+        align-content: center;
+        background-image: url('images/submit.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position-x: center;
+        border: none;
+        padding: 30px 60px 30px 60px;
+        margin: 5px 15px;
+        border-radius: 15px;
+        cursor: pointer;
+        font-size: 1.4em;
+        min-width: 190px;
+        max-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
