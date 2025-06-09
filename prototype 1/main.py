@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, redirect, flash
+from flask import Flask, render_template, request, url_for, redirect, flash, jsonify
 from time import sleep
 
 #create a Flask application
@@ -65,6 +65,22 @@ def squish():
 def ballon():
     return render_template('balloon.html')
 
+#route for avatar creation and saving into an array
+
+@app.route('/avatar',methods=['GET', 'POST'])
+def avatar(): 
+    return render_template('avatar.html')
+
+#save into array
+character_data = []
+def save_avatar():
+    data = request.json
+    character_data.append(data) #saving data to the global list
+    print("Character Data:", character_data)
+    return jsonify(status='success', saved=data, total=len(character_data))
+    
+
 #run the application
 if __name__ == '__main__':
     app.run(debug=True)
+
