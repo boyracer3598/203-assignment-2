@@ -1,9 +1,12 @@
 from flask import Flask, render_template, request, url_for, redirect, flash
 from time import sleep
-
+import datetime
 #create a Flask application
 app = Flask(__name__)
 app.secret_key = "yoshi"
+
+moodLog = []
+
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -69,12 +72,28 @@ def squish():
 def ballon():
     return render_template('balloon.html')
 
+#get date and formate it
+def get_date():
+    now = datetime.datetime.now()
+    return now.strftime("%Y-%m-%d")
+
+
+
 # page for logging your mood
 @app.route('/mood', methods=['GET', 'POST'])
 def mood():
     if request.method == 'POST':
         mood = request.form['mood']
         print(f"User's mood: {mood}")
+        moodComment = request.form['mood_comment']
+        print(f"User's mood comment: {moodComment}")
+        # does not allow empty comment
+        if( mood == "" or moodComment == ""):
+            return render_template('mood.html')
+        else:
+            moodLog.append({'date':get_date(),'mood': mood, 'comment': moodComment})
+            print(f"Mood log: {moodLog}") 
+            # also go back to a page
     return render_template('mood.html')
 
 #run the application
