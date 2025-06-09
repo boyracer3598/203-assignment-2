@@ -8,12 +8,26 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     </head>
     <body>
-        <h1>Log your mood</h1>
+        <h2>Log your mood</h2>
 
 
         <form method="POST" id="mood-form">
-            <label for="mood">How are you feeling today?</label><br>
-            <input type="text" id="mood" name="mood" required><br><br>
+            <h2>what is your mood</h2>
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <input type="radio" id="excited" name="mood" value="excited">
+                <label for="excited">😍</label>
+                <input type="radio" id="happy" name="mood" value="happy">
+                <label for="happy">😀</label>
+                <input type="radio" id="neutral" name="mood" value="neutral">
+                <label for="neutral">😐</label>
+                <input type="radio" id="sad" name="mood" value="sad">
+                <label for="sad">😞</label>
+                <input type="radio" id="angry" name="mood" value="angry">
+                <label for="angry">😠</label>
+            </div>
+            
+            
+
             <button type="submit">Submit</button>
            
         </form>

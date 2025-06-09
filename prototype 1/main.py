@@ -73,7 +73,8 @@ def ballon():
 @app.route('/mood', methods=['GET', 'POST'])
 def mood():
     if request.method == 'POST':
-        pass
+        mood = request.form['mood']
+        print(f"User's mood: {mood}")
     return render_template('mood.html')
 
 #run the application
