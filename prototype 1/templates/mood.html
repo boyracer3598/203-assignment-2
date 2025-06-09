@@ -8,10 +8,11 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     </head>
     <body>
-        <h2>Log your mood</h2>
+        
 
 
         <form method="POST" id="mood-form">
+            <h2>Log your mood</h2>
             <h2>what is your mood</h2>
             <div style="display: flex; gap: 1rem; align-items: center;">
                 <input type="radio" id="excited" name="mood" value="excited">
@@ -29,7 +30,6 @@
                 <label for="mood_comment">Comment:</label><br>
                 <textarea id="mood_comment" name="mood_comment" rows="4" cols="50" placeholder="How are you feeling today?"></textarea>
             </div>
-            
 
             <button type="submit">Submit</button>
            

@@ -33,8 +33,6 @@ def index():
         #redirect to another page
         return redirect(url_for('greet', name=name))
     
-    else:
-        message = ""
     return render_template("index.html", message=message)
 
 @app.route('/greet/<name>',methods=['GET', 'POST'])
@@ -93,7 +91,11 @@ def mood():
         else:
             moodLog.append({'date':get_date(),'mood': mood, 'comment': moodComment})
             print(f"Mood log: {moodLog}") 
+            # temp name for now
+            name= 'User'
             # also go back to a page
+            return redirect(url_for('greet', name=name))
+            
     return render_template('mood.html')
 
 #run the application
