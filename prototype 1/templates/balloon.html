@@ -9,16 +9,20 @@
         <script src="/static/script.js"></script>
     </head>
     <body>
-        <div class="center-div"> 
-            <img src="/static/images/balloon1.png" id="Image-balloon" style="width: 200px; height: 200px;" onclick="popBalloon()">
+        <div class="games">
+            <h1>Balloon</h1>
+            <p>Click the balloon to pop it!</p>
+            <div class="center-div"> 
+                <img src="/static/images/balloon1.png" id="Image-balloon" style="width: 200px; height: 200px;" onclick="popBalloon()">
+            </div>
+            <form>  
+                <button onclick="resetBalloon()">Reset Balloon</button>
+            </form>
+            
+            <form action="/games" method="post">
+                <button type="submit">Back</button>
+            </form>
         </div>
-        <form>  
-            <button onclick="resetBalloon()">Reset Balloon</button>
-        </form>
-        
-        <form action="/games" method="post">
-            <button type="submit">Back to Menu</button>
-        </form>
         
     </body>
 </html>

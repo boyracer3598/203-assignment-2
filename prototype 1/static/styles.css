@@ -12,6 +12,15 @@
         min-height: 100vh;
         
     }
+
+    .center-div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 20px auto;
+    }
+    
     h1 {
         font-size: 24px;
         color: #000000;
@@ -61,6 +70,16 @@
         background-image: url('images/login_block.png');
         margin: 2px 700px 5px 700px;
         padding: 50px 100px;
+        border-radius: 35px;
+    }
+    .games form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-image: url('images/login_block.png');
+        margin: 0px px 0px 0px;
+        padding: 0px 0px;
         border-radius: 35px;
     }
 
@@ -170,6 +189,44 @@
         border-radius: 35px;
 
         
+    }
+
+     .games form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-image: none;
+         margin: 40px 700px 5px 700px;
+        padding: 0px 0px;
+        border-radius: 35px;
+    }
+
+    .center-div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 20px auto;
+    }
+
+    .games button{
+        align-content: center;
+        background-image: url('images/button.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position-x: center;
+        border: none;
+        padding: 30px 60px 30px 60px;
+        margin: 5px 15px;
+        border-radius: 15px;
+        cursor: pointer;
+        font-size: 1.4em;
+        min-width: 190px;
+        max-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     input[type="text"] {
