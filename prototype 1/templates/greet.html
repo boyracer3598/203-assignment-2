@@ -6,7 +6,17 @@
     <body>
         <h1>Richard Gillingham</h1>
         <p>This is a simple Flask application.</p>
-        <form action="/games" method="post">
-        <button type="submit">play fidgets</button>
-        </form>
+        <div id="mainmenu-buttons">
+            <form action="/games" method="get">
+                <button type="submit">play fidgets</button>
+            </form>
+            <form action="/mood" method="get">
+                <button type="submit">Log your mood</button>
+            </form>
+            <form action="/avatar" method="get">
+                <button type="submit">Avatar</button>
+            </form>
+        </div>
+           
+        
     </body>

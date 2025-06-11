@@ -160,8 +160,56 @@ def mood():
             name= 'User'
             # also go back to a page
             return redirect(url_for('greet', name=name))
-            
+    # if the request is a GET request, just render the mood page      
     return render_template('mood.html')
+
+
+
+#route for avatar creation and saving into an array
+
+@app.route('/avatar', methods=['GET', 'POST'])
+def avatar():
+    if request.method == 'POST':
+        
+        # get the shirt color
+        shirt_color = request.form.get('shirt_color')
+        print("Shirt Color:", shirt_color)
+
+        if shirt_color == 'red':
+            shirt_color = 'shirt2.png'
+        elif shirt_color == 'blue':
+            shirt_color = 'shirt1.png'
+
+        # get the pants type
+        pants_type = request.form.get('pants_type')
+        print("Pants Type:", pants_type)
+
+        if pants_type == 'jeans':
+            pants_type = 'pants1.png'
+        elif pants_type == 'shorts':
+            pants_type = 'pants2.png'
+
+        # get the shoe type
+        shoe_type = request.form.get('shoe_type')
+        print("Shoe Type:", shoe_type)
+        
+        if shoe_type == 'red boots':
+            shoe_type = 'shoe1.png'
+        elif shoe_type == 'sneakers':
+            shoe_type = 'shoe2.png'
+
+        # get the hair type
+        hair_type = request.form.get('hair_type')
+        print("Hair Type:", hair_type)
+
+        if hair_type == 'long':
+            hair_type = 'hair1.png'
+        elif hair_type == 'short':
+            hair_type = 'hair2.png'
+
+        #send the shirt color to the link
+        return redirect(url_for('avatar', shirt_color=shirt_color, pants_type=pants_type, shoe_type=shoe_type, hair_type=hair_type))
+    return render_template('avatar.html', shirt_color=request.args.get('shirt_color', 'default.png'), pants_type=request.args.get('pants_type', 'default.png'), shoe_type=request.args.get('shoe_type', 'shoe2.png'), hair_type=request.args.get('hair_type', 'default.png'))
 
 
 #run the application

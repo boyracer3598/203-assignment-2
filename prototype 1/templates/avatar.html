@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Avatar Customization</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body class="avatar-customization">
+        
+         <div id="avatar-container" style="position: relative; width: 500px; height: 600px;">
+            <h1>Customize your Avatar</h1>
+            <img src="/static/images/avatar.png" alt="Avatar" style="position: fixed; width: 500px; height: 600px;">
+            <img id="pants" src="{{url_for('static', filename='images/pants/' + pants_type)}}" style="position: fixed; width: 500px; height: 600px; z-index: 2;" alt="Pants">
+            <img  id="shirt" src="{{url_for('static', filename='images/shirts/' + shirt_color)}}" style="position: fixed; width: 500px; height: 600px; z-index: 3;" alt="Shirt">
+            <img id="shoes" src="{{url_for('static', filename='images/shoes/' + shoe_type)}}" style="position: fixed; width: 500px; height: 600px; z-index: 1;" alt="Shoes">
+            <img id="hair" src="{{url_for('static', filename='images/hair/' + hair_type)}}" style="position: fixed; width: 500px; height: 600px; z-index: 4;" alt="Hair">
+            
+         </div>
+        
+        <div id="avatar-selection" >
+            <form method="post" action="/avatar">
+
+                <label for="pants_type">Select pants:</label>
+                <select id="pants_type" name="pants_type">
+                    <option value="jeans">Jeans</option>
+                    <option value="shorts">Shorts</option>
+                </select>
+            
+                <label for="shirt_color">Select shirt:</label>
+                <select id="shirt_color" name="shirt_color">
+                    <option value="red">Red</option>
+                    <option value="blue">Blue</option>
+                </select>
+
+                <label for="shoe_type">Select shoes:</label>
+                <select id="shoe_type" name="shoe_type">
+                    <option value="red boots">Red Boots</option>
+                    <option value="sneakers">Sneakers</option>
+                </select>
+
+                <label for="hair_type">Select hair:</label>
+                <select id="hair_type" name="hair_type">
+                    <option value="long">Long</option>
+                    <option value="short">Short</option>
+                </select>
+
+
+                <button type="submit">Save Avatar</button>
+            </form>
+            <form action="/greet" method="post" >
+                <button type="submit">Back</button>
+            </form>
+           
+        </div>
+    </body>
+</html>
