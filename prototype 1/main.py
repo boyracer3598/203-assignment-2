@@ -94,9 +94,9 @@ def avatar():
         print("Shoe Type:", shoe_type)
         
         if shoe_type == 'red boots':
-            shoe_type = 'shoes1.png'
+            shoe_type = 'shoe1.png'
         elif shoe_type == 'sneakers':
-            shoe_type = 'shoes2.png'
+            shoe_type = 'shoe2.png'
 
         # get the hair type
         hair_type = request.form.get('hair_type')
@@ -109,7 +109,7 @@ def avatar():
 
         #send the shirt color to the link
         return redirect(url_for('avatar', shirt_color=shirt_color, pants_type=pants_type, shoe_type=shoe_type, hair_type=hair_type))
-    return render_template('avatar.html', shirt_color=request.args.get('shirt_color', 'default.png'), pants_type=request.args.get('pants_type', 'default.png'), shoe_type=request.args.get('shoe_type', 'default.png'), hair_type=request.args.get('hair_type', 'default.png'))
+    return render_template('avatar.html', shirt_color=request.args.get('shirt_color', 'default.png'), pants_type=request.args.get('pants_type', 'default.png'), shoe_type=request.args.get('shoe_type', 'shoe2.png'), hair_type=request.args.get('hair_type', 'default.png'))
 
 #run the application
 if __name__ == '__main__':

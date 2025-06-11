@@ -6,15 +6,18 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     </head>
     <body class="avatar-customization">
-        <h1>Customize your Avatar</h1>
+        
          <div id="avatar-container" style="position: relative; width: 500px; height: 600px;">
+            <h1>Customize your Avatar</h1>
             <img src="/static/images/avatar.png" alt="Avatar" style="position: fixed; width: 500px; height: 600px;">
             <img id="pants" src="{{url_for('static', filename='images/pants/' + pants_type)}}" style="position: fixed; width: 500px; height: 600px; z-index: 2;" alt="Pants">
-            <img  id="shirt" src="{{url_for('static', filename='images/shirts/' + shirt_color)}}" style="position: fixed; width: 500px; height: 600px; z-index: 1;" alt="Shirt">
-            <img id="shoes" src="{{url_for('static', filename='images/shoes/' + shoe_type)}}" style="position: fixed; width: 500px; height: 200px; z-index: 3;" alt="Shoes">
+            <img  id="shirt" src="{{url_for('static', filename='images/shirts/' + shirt_color)}}" style="position: fixed; width: 500px; height: 600px; z-index: 3;" alt="Shirt">
+            <img id="shoes" src="{{url_for('static', filename='images/shoes/' + shoe_type)}}" style="position: fixed; width: 500px; height: 600px; z-index: 1;" alt="Shoes">
             <img id="hair" src="{{url_for('static', filename='images/hair/' + hair_type)}}" style="position: fixed; width: 500px; height: 600px; z-index: 4;" alt="Hair">
          </div>
-        <form method="post" action="/avatar">
+        
+        <div id="avatar-selection">
+         <form method="post" action="/avatar">
 
             <label for="pants_type">Select pants:</label>
             <select id="pants_type" name="pants_type">
@@ -45,5 +48,6 @@
 
             <button type="submit">Save Avatar</button>
         </form>
+        </div>
     </body>
 </html>
