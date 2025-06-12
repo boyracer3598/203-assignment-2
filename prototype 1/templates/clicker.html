@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>clicker</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        <div class="games">
+            <h1>Clicker</h1>
+            <form action="/clicker" method="post">
+                <P>Times clicked:{{count}}</P>
+                <button type="submit">Click Me</button>
+            </form>
+            
+            <form action="/games" method="post">
+                <button type="submit">Back </button>
+            </form>
+        </div>
+    </body>
+</html>

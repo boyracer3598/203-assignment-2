@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Log your mood</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        
+        <div class="main-content">
+            <div id="mood-container" >
+                <form method="POST" id="mood-form">
+                
+                    
+                <h2>Log your mood</h2>
+                <h2>what is your mood</h2>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <input type="radio" id="excited" name="mood" value="excited">
+                    <label for="excited">😍</label>
+                    <input type="radio" id="happy" name="mood" value="happy">
+                    <label for="happy">😀</label>
+                    <input type="radio" id="neutral" name="mood" value="neutral" checked>
+                    <label for="neutral">😐</label>
+                    <input type="radio" id="sad" name="mood" value="sad">
+                    <label for="sad">😞</label>
+                    <input type="radio" id="angry" name="mood" value="angry">
+                    <label for="angry">😠</label>
+                </div>
+                <div>
+                    <label for="mood_comment">Comment:</label><br>
+                    <textarea id="mood_comment" name="mood_comment" rows="4" cols="50" placeholder="How are you feeling today?"></textarea>
+                </div>
+
+                <button type="submit">Submit</button>
+            
+                </form>
+                
+        </div>
+    </body>
+</html>

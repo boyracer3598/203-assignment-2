@@ -12,6 +12,15 @@
         min-height: 100vh;
         
     }
+
+    .center-div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 20px auto;
+    }
+    
     h1 {
         font-size: 24px;
         color: #000000;
@@ -63,6 +72,16 @@
         padding: 50px 100px;
         border-radius: 35px;
     }
+    .games form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-image: url('images/login_block.png');
+        margin: 0px px 0px 0px;
+        padding: 0px 0px;
+        border-radius: 35px;
+    }
 
     input[type="text"] {
         padding: 10px;
@@ -103,6 +122,18 @@
         background-color: #ffebee;
         color: #d32f2f;
         border: 1px solid #ffcdd2;
+    }
+
+    #avatar-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px auto;
+    }
+
+    #avatar-selection select {
+        margin: 10px;
+
     }
 
 }
@@ -172,6 +203,65 @@
         
     }
 
+     .games form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-image: none;
+         margin: 40px 700px 5px 700px;
+        padding: 0px 0px;
+        border-radius: 35px;
+    }
+
+    .center-div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 20px auto;
+    }
+
+    .games button{
+        align-content: center;
+        background-image: url('images/button.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position-x: center;
+        border: none;
+        padding: 30px 60px 30px 60px;
+        margin: 5px 15px;
+        border-radius: 15px;
+        cursor: pointer;
+        font-size: 1.4em;
+        min-width: 190px;
+        max-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    #avatar-selection button {
+        align-content: center;
+        background-image: url('images/button.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position-x: center;
+        border: none;
+        padding: 30px 60px 30px 60px;
+        margin: 5px 15px;
+        border-radius: 15px;
+        cursor: pointer;
+        font-size: 1em;
+        min-width: 190px;
+        max-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+
     input[type="text"] {
         padding: 10px;
         border: 1px solid #ced4da;
@@ -230,5 +320,81 @@
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+
+
+    #avatar-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 20px 0 20px 300px;
+    }
+     #avatar-selection {
+        position: fixed; 
+        top: 100px; 
+        left: 20px; 
+        z-index: 5;}    
+
+    #avatar-selection select {
+        margin: 10px;
+
+    }
+
+    #mood-container {
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+       
+        
+        
+    }
+
+    #mainMenu-buttons {
+        flex-direction: column;
+        width: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 20px auto;
+    }
+
+    #mainMenu-buttons form {
+        align-items: center;
+        justify-content: center;
+        background-image: none;
+        margin: 2px 1px 5px 1px;
+        padding: 10px 20px;
+        border-radius: 35px;
+    }
+    #mainMenu-buttons button{
+        align-content: center;
+        background-image: url('images/button.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position-x: center;
+        border: none;
+        padding: 30px 60px 30px 60px;
+        margin: 5px 15px;
+        border-radius: 15px;
+        cursor: pointer;
+        font-size: 1em;
+        min-width: 190px;
+        max-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #mood-container form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-image: none;
+        margin: 2px 1px 5px 1px;
+        padding: 50px 100px;
+        border-radius: 35px;
+    
     }
 }
