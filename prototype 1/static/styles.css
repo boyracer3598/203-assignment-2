@@ -350,7 +350,25 @@
         
         
     }
-    #mainmenu-buttons button{
+
+    #mainMenu-buttons {
+        flex-direction: column;
+        width: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 20px auto;
+    }
+
+    #mainMenu-buttons form {
+        align-items: center;
+        justify-content: center;
+        background-image: none;
+        margin: 2px 1px 5px 1px;
+        padding: 10px 20px;
+        border-radius: 35px;
+    }
+    #mainMenu-buttons button{
         align-content: center;
         background-image: url('images/button.png');
         background-size: contain;

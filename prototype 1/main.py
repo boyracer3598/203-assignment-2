@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, redirect, flash
+from flask import Flask, render_template, request, url_for, redirect, flash,session
 from time import sleep
 import sqlite3
 import datetime
@@ -59,7 +59,7 @@ def index():
             #sleep(2)
             return render_template("index.html", message=message)
 
-        CurrentUser = user['name']
+        session['current_user'] = user['name']
         #redirect to another page
         return redirect(url_for('greet'))
 
@@ -69,7 +69,9 @@ def index():
 
 @app.route('/greet', methods=['GET', 'POST'])
 def greet():
-    return render_template('greet.html')
+    user_name = session.get('current_user', None)
+    print(f"Current User: {user_name}")
+    return render_template('greet.html', CurrentUser=user_name)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
