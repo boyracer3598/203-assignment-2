@@ -213,6 +213,11 @@ def avatar():
         return redirect(url_for('avatar', shirt_color=shirt_color, pants_type=pants_type, shoe_type=shoe_type, hair_type=hair_type))
     return render_template('avatar.html', shirt_color=request.args.get('shirt_color', 'default.png'), pants_type=request.args.get('pants_type', 'default.png'), shoe_type=request.args.get('shoe_type', 'shoe2.png'), hair_type=request.args.get('hair_type', 'default.png'))
 
+# page for mental health exercises
+@app.route('/exercise', methods=['GET', 'POST'])
+def exercise():
+    return render_template('exercise.html')
+
 
 #run the application
 if __name__ == '__main__':
