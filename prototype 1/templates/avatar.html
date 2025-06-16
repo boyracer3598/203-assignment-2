@@ -27,30 +27,32 @@
                     
                 </select>
             
-                <label for="shirt_color">Select shirt:</label>
+                <label for="shirt_color">shirt:</label>
                 <select id="shirt_color" name="shirt_color" ">
                     <option value="red">Red</option>
                     <option value="blue">Blue</option>
                 </select>
 
-                <label for="shoe_type">Select shoes:</label>
+                <label for="shoe_type">shoes:</label>
                 <select id="shoe_type" name="shoe_type">
                     <option value="red boots">Red Boots</option>
                     <option value="sneakers">Sneakers</option>
                 </select>
 
-                <label for="hair_type">Select hair:</label>
+                <label for="hair_type">hair:</label>
                 <select id="hair_type" name="hair_type">
                     <option value="long">Long</option>
                     <option value="short">Short</option>
                 </select>
 
-
-                <button type="submit">Save Avatar</button>
-            </form>
-            <form action="/greet" method="post" >
-                <button type="submit">Back</button>
-            </form>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <form method="post" action="/avatar" style="margin: 0;">
+                        <button type="submit">Save Avatar</button>
+                    </form>
+                    <form action="/greet" method="post" style="margin: 0;">
+                        <button type="submit">Back</button>
+                    </form>
+                </div>
            
         </div>
     </body>
