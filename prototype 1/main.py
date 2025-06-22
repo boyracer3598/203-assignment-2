@@ -67,6 +67,32 @@ def index():
         message = ""
     return render_template("index.html", message=message)
 
+def get_average_mood():
+    #select all the moods for the mood_logs table from the current user
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT mood FROM mood_logs WHERE account_id = (SELECT id FROM accounts WHERE name = ?)", (session.get('current_user', None),))
+    moods = cursor.fetchall()
+    conn.close()
+    if not moods:
+        return "No mood data available."
+    mood_values = {'happy': 4, 'excited' : 5, 'neutral': 3, 'sad': 2, 'angry': 1}
+    total_score = 0
+    for mood in moods:
+        total_score += mood_values.get(mood['mood'], 0)
+    average_score = total_score / len(moods)
+    if average_score > 4:
+        return "excited"
+    elif average_score > 3:
+        return "happy"  
+    elif average_score > 2:
+        return "neutral"
+    elif average_score > 1:
+        return "sad"
+    else:
+        return "angry"
+    
+
 @app.route('/greet', methods=['GET', 'POST'])
 def greet():
     user_name = session.get('current_user', None)
@@ -106,6 +132,15 @@ def login():
         
 
     return render_template("login.html", message="")
+
+
+@app.route("/trackmood", methods=["GET", "POST"])
+def track_mood():
+    
+    current_mood_average = get_average_mood()
+    print(f"Current Mood Average: {current_mood_average}")
+    # send the current mood average to the trackmood.html page
+    return render_template("trackmood.html", average_mood=current_mood_average)
 
 # game stuff
 # for games
@@ -157,6 +192,38 @@ def mood():
             return render_template('mood.html')
         else:
             moodLog.append({'date':get_date(),'mood': mood, 'comment': moodComment})
+            # add the mood to the database with the id number of the user
+            # get the current user from the session
+            current_user = session.get('current_user', None)
+            if not current_user:
+                flash("You must be logged in to log your mood.")
+                return redirect(url_for('login'))
+            conn = get_db_connection()
+            cursor = conn.cursor()
+            #get the id of the current user
+            cursor.execute("SELECT id FROM accounts WHERE name = ?", (current_user,))
+            user = cursor.fetchone()
+            if not user:
+                flash("User not found.")
+                return redirect(url_for('login'))
+            current_user_id = user['id']
+            #get the current user email
+            cursor.execute("SELECT email FROM accounts WHERE name = ?", (current_user,))
+            user_email = cursor.fetchone()
+            if not user_email:
+                flash("User email not found.")
+                return redirect(url_for('login'))
+            current_user_email = user_email['email']
+            # insert the mood log into the database
+            print(f"Inserting mood log for user {current_user} with email {current_user_email}")
+            # create a new row in the mood_logs table
+            # mood_logs table has account_id, name, email, mood, timestamp, comment
+
+            cursor.execute('INSERT INTO mood_logs (account_id, name, email, mood, comment) VALUES (?, ?, ?, ?, ?)', (current_user_id, current_user, current_user_email, mood, moodComment))
+            # commit the changes to the database
+            conn.commit()
+
+
             print(f"Mood log: {moodLog}") 
             # temp name for now
             name= 'User'

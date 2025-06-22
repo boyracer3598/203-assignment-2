@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mood tracking</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Flask App</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        <h1>Track your mood</h1>
+        <div id="trackmood-container">
+            <form action="/trackmood" method="post">
+                <label id="text">lets see how youve been feeling</label>
+
+                <div id="mood-tracker">
+                    <div id = "average mood">
+                        <h2>Average Mood</h2>
+                        <p>{{ average_mood }}</p>
+                    </div>
+                
+            </form>
+    </body>

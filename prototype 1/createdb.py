@@ -4,24 +4,28 @@ import sqlite3
 conn = sqlite3.connect('accounts.db')
 cursor = conn.cursor()
 
+
 # Create a table
 cursor.execute('''
-CREATE TABLE IF NOT EXISTS accounts (
+CREATE TABLE IF NOT EXISTS mood (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
+    account_id INTEGER NOT NULL,
     name TEXT NOT NULL,
     email TEXT NOT NULL UNIQUE,
-    password TEXT
+    mood TEXT NOT NULL,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    comment TEXT NOT NULL,
+    FOREIGN KEY (account_id) REFERENCES accounts(id)
 )
 ''')
 
 # Insert sample data
-accounts = [
-    ('John Doe', 'john@doe.co.nz', '12345678'),
-    ('Jane Smith', 'jane@smith.co.nz', '87654321'),
-    ('Bob Johnson', 'bob@johnson.co.nz', 'password123')
+mood = [
+    ('1', 'John Doe', 'john@doe.co.nz', 'happy', '2023-10-01 10:00:00', 'Feeling great today!'),
+    ('2' ,'Jane Smith', 'jane@smith.co.nz', 'sad', '2023-10-01 11:00:00', 'A bit down, but hopeful.'),
 ]
 
-cursor.executemany('INSERT INTO accounts (name, email, password) VALUES (?, ?, ?)', accounts)
+cursor.executemany('INSERT INTO mood (account_id, name, email, mood, timestamp, comment) VALUES (?, ?, ?, ?, ?, ?)', mood)
 
 # Commit changes and close connection
 conn.commit()
