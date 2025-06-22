@@ -218,6 +218,21 @@ def avatar():
 def exercise():
     return render_template('exercise.html')
 
+@app.route('/exercise/meditation', methods=['GET', 'POST'])
+def meditation():
+    return render_template('meditation.html')
+
+@app.route('/exercise/breathing', methods=['GET', 'POST'])
+def breathing():
+    return render_template('breathing.html')
+
+@app.route('/exercise/grounding', methods=['GET', 'POST'])
+def grounding():
+    return render_template('grounding.html')
+
+@app.route('/exercise/grounding', methods=['GET', 'POST'])
+def grounding():
+    return render_template('grounding.html')
 
 #run the application
 if __name__ == '__main__':
