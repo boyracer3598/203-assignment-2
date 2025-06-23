@@ -8,23 +8,12 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     </head>
     <body>
-       <div id="exercise-container">
-            <h1>self care</h1>
-            <h2>Exercises</h2>
-            <div class="exercise-list">
-                <form action="/exercise/meditation" method="post">
-                    <button type="submit">Meditation</button>
-                </form>
-                <form action="/exercise/breathing" method="post">
-                    <button type="submit">Breathing</button>
-                </form>
-                <form action="/exercise/journaling" method="post">
-                    <button type="submit">Journaling</button>
-                </form>
-                <form action="/exercise/grounding" method="post">
-                    <button type="submit">Grounding</button>
-                </form>
-            </div>>
+       <div class="exercises">
+            <h1>Meditation</h1>
+            <h2>mindful Meditation</h2>
+            <p>mindfullness Meditation is when you focus on your senors intensely and the feeling you are feeling at the current moment</p>
+            <img  src="{{ url_for('static', filename='images/mindfulMeditation.png') }}" alt="Meditation Exercise" class="exercise-image">
+            <button  class="exercise-button" onclick="window.location.href='{{ url_for('exercise') }}'">Back to Exercises</button>
         </div>
         
     </body>

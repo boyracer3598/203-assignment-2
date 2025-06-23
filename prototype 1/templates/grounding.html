@@ -8,23 +8,25 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     </head>
     <body>
-       <div id="exercise-container">
-            <h1>self care</h1>
-            <h2>Exercises</h2>
-            <div class="exercise-list">
-                <form action="/exercise/meditation" method="post">
-                    <button type="submit">Meditation</button>
-                </form>
-                <form action="/exercise/breathing" method="post">
-                    <button type="submit">Breathing</button>
-                </form>
-                <form action="/exercise/journaling" method="post">
-                    <button type="submit">Journaling</button>
-                </form>
-                <form action="/exercise/grounding" method="post">
-                    <button type="submit">Grounding</button>
-                </form>
-            </div>>
+       <div class="exercises">
+            <h1>Grounding</h1>
+            <h2>Benefits of grounding</h2>
+            <p>
+                Grounding helps pull way from negative or unwanted feeling or emotions
+                <br><br>
+                1.putting your hands in water, focus on the temperature of the water
+                <img src="{{ url_for('static', filename='images/water.png') }}"  class="exercise-image">
+                <br>
+                2.pick up or touch an object, focus on the object focus on the texture,weight, and shape
+                <img src="{{ url_for('static', filename='images/objects.png') }}"  class="exercise-image">
+                <br>
+                3.breathing, focus on how your breath feels, the temperature of the air, and the sound of your breath
+                <img src="{{ url_for('static', filename='images/pursedLipBreathing.png') }}"  class="exercise-image">
+                <br>
+                4.Enjoy food or drink, savor every bite or sip, focus on the taste, texture, and smell
+                <img src="{{ url_for('static', filename='images/foodDrink.png') }}"  class="exercise-image">
+            </p>
+            <button  class="exercise-button" onclick="window.location.href='{{ url_for('exercise') }}'">Back to Exercises</button>
         </div>
         
     </body>

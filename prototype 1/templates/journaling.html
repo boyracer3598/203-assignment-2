@@ -8,23 +8,24 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     </head>
     <body>
-       <div id="exercise-container">
-            <h1>self care</h1>
-            <h2>Exercises</h2>
-            <div class="exercise-list">
-                <form action="/exercise/meditation" method="post">
-                    <button type="submit">Meditation</button>
-                </form>
-                <form action="/exercise/breathing" method="post">
-                    <button type="submit">Breathing</button>
-                </form>
-                <form action="/exercise/journaling" method="post">
-                    <button type="submit">Journaling</button>
-                </form>
-                <form action="/exercise/grounding" method="post">
-                    <button type="submit">Grounding</button>
-                </form>
-            </div>>
+       <div class="exercises">
+            <h1>Journaling</h1>
+            <h2>Benefits of Journaling</h2>
+            <p>Journaling is a useful self reflection tool</p>
+            <img src="{{ url_for('static', filename='images/journaling.png') }}" alt="Journaling Exercise" class="exercise-image">
+            <h2>How to Journal</h2>
+            <p> using journaling prompts helps break down the reflection
+            <br><br>
+            values check-in: did follow your values today
+            <br>
+            Learning: what did you learn today
+            <br>
+            insight: were any interaction that gave you insight positive or negative
+            <br>
+            Dreams and desires: what your dream and step you can take tomorrow to get closer to your dream
+            <br>
+            Barriers and solutions: that problems you faced and how did you overcome them</p>
+            <button  class="exercise-button" onclick="window.location.href='{{ url_for('exercise') }}'">Back to Exercises</button>
         </div>
         
     </body>

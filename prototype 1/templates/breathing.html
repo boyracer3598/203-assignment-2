@@ -8,24 +8,13 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     </head>
     <body>
-       <div id="exercise-container">
-            <h1>self care</h1>
-            <h2>Exercises</h2>
-            <div class="exercise-list">
-                <form action="/exercise/meditation" method="post">
-                    <button type="submit">Meditation</button>
-                </form>
-                <form action="/exercise/breathing" method="post">
-                    <button type="submit">Breathing</button>
-                </form>
-                <form action="/exercise/journaling" method="post">
-                    <button type="submit">Journaling</button>
-                </form>
-                <form action="/exercise/grounding" method="post">
-                    <button type="submit">Grounding</button>
-                </form>
-            </div>>
+       <div class="exercises">
+            <h1>Breathing</h1>
+            <p>Breathing is something that can be done in very little amount of time</p>
+            <h2>Pursed lip breathing</h2>
+            <p>Be relaxed<br> keep your mouth closed, slowly inhale through your nose<br> shape your lips like going to whistle<br>exhale slowly though your mouth</p>
+            <img src="{{ url_for('static', filename='images/pursedLipBreathing.png') }}" alt="Breathing Exercise" class="exercise-image">
+            <button class="exercise-button" onclick="window.location.href='{{ url_for('exercise') }}'">Back to Exercises</button>
         </div>
-        
     </body>
 </html>

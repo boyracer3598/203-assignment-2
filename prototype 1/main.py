@@ -230,9 +230,9 @@ def breathing():
 def grounding():
     return render_template('grounding.html')
 
-@app.route('/exercise/grounding', methods=['GET', 'POST'])
-def grounding():
-    return render_template('grounding.html')
+@app.route('/exercise/journaling', methods=['GET', 'POST'] )
+def journaling():
+    return render_template('journaling.html')
 
 #run the application
 if __name__ == '__main__':
