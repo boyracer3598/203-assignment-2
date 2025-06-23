@@ -81,16 +81,7 @@ def get_average_mood():
     for mood in moods:
         total_score += mood_values.get(mood['mood'], 0)
     average_score = total_score / len(moods)
-    if average_score > 4:
-        return "excited"
-    elif average_score > 3:
-        return "happy"  
-    elif average_score > 2:
-        return "neutral"
-    elif average_score > 1:
-        return "sad"
-    else:
-        return "angry"
+    return average_score
     
 
 @app.route('/greet', methods=['GET', 'POST'])
@@ -138,9 +129,24 @@ def login():
 def track_mood():
     
     current_mood_average = get_average_mood()
-    print(f"Current Mood Average: {current_mood_average}")
+    mood_translations = "happy"
+    average_score = current_mood_average
+    print(f"Average Mood Score: {average_score}")
+    if average_score > 4:
+        mood_translations = "excited"
+    elif average_score > 3:
+        mood_translations = "happy"  
+    elif average_score > 2:
+        mood_translations = "neutral"
+    elif average_score > 1:
+        mood_translations = "sad"
+    else:
+        mood_translations = "angry"
+    #for testing purposes
+    average_score = 0
+    moveleft = 150 * (5 - average_score)
     # send the current mood average to the trackmood.html page
-    return render_template("trackmood.html", average_mood=current_mood_average)
+    return render_template("trackmood.html", average_mood=current_mood_average, moveleft=moveleft)
 
 # game stuff
 # for games

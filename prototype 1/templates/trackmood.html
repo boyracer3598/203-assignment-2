@@ -6,6 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>My Flask App</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+        
     </head>
     <body>
         <h1>Track your mood</h1>
@@ -17,6 +19,13 @@
                     <div id = "average mood">
                         <h2>Average Mood</h2>
                         <p>{{ average_mood }}</p>
+
+                        <div id="mood_line_container">
+                            <img id="icon" src="{{ url_for('static', filename='images/icon.png') }}" alt="Icon" style="padding-left: {{ moveleft }}px;">
+                            <img id="mood_line" src="{{ url_for('static', filename='images/mood_line.png') }}" alt="Mood Image">
+                        </div>
+
+                        
                     </div>
                 
             </form>
