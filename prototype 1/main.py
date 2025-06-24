@@ -142,9 +142,9 @@ def track_mood():
         mood_translations = "sad"
     else:
         mood_translations = "angry"
-    #for testing purposes
-    average_score = 0
+    # calculate how far the user needs to move left based on the average score
     moveleft = 150 * (5 - average_score)
+
     # send the current mood average to the trackmood.html page
     return render_template("trackmood.html", average_mood=current_mood_average, moveleft=moveleft)
 

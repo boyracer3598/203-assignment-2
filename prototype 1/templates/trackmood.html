@@ -10,10 +10,11 @@
         
     </head>
     <body>
-        <h1>Track your mood</h1>
+        
         <div id="trackmood-container">
-            <form action="/trackmood" method="post">
-                <label id="text">lets see how youve been feeling</label>
+            <h1>Track your mood</h1>
+            
+                <h2>lets see how you've been feeling</h2>
 
                 <div id="mood-tracker">
                     <div id = "average mood">
@@ -23,10 +24,14 @@
                         <div id="mood_line_container">
                             <img id="icon" src="{{ url_for('static', filename='images/icon.png') }}" alt="Icon" style="padding-left: {{ moveleft }}px;">
                             <img id="mood_line" src="{{ url_for('static', filename='images/mood_line.png') }}" alt="Mood Image">
+                        <button class="exercise-button" onclick="window.location.href='{{ url_for('greet') }}'">Back</button>
                         </div>
 
                         
+                        
                     </div>
+                </div>
+        </div>
                 
-            </form>
+            
     </body>

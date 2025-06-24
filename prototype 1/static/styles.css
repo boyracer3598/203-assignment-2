@@ -113,7 +113,7 @@
         background-repeat: no-repeat;
         background-position-x: center;
         border: none;
-        padding: 30px 60px 30px 60px;
+        padding: 30px 0px 30px 0px;
         margin: 5px 15px;
         border-radius: 15px;
         cursor: pointer;
@@ -123,6 +123,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        width: 190px;
+    }
+
+    button:hover{
+        opacity: 70%;
     }
 
     form {
@@ -249,9 +254,28 @@
     .exercise-image{
         width: 300px;
         
-    }   
+    } 
+
+    #icon {
+        width: 100px;
+    }    
+    
+    #mood_line_container{
+        scale: 0.6;
+        display: flex;
+        flex-direction: column;
+        margin: 20px auto;
 
     }
+     #trackmood-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 20px auto;
+    }
+
+}
 
 
 /* desktop css rules */
@@ -368,25 +392,6 @@
         margin: 20px auto;
     }
 
-    .games button{
-        align-content: center;
-        background-image: url('images/button.png');
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position-x: center;
-        border: none;
-        padding: 30px 60px 30px 60px;
-        margin: 5px 15px;
-        border-radius: 15px;
-        cursor: pointer;
-        font-size: 1.4em;
-        min-width: 190px;
-        max-height: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
 
     button{
         align-content: center;
@@ -395,7 +400,7 @@
         background-repeat: no-repeat;
         background-position-x: center;
         border: none;
-        padding: 30px 60px 30px 60px;
+        padding: 30px 0px 30px 0px;
         margin: 5px 15px;
         border-radius: 15px;
         cursor: pointer;
@@ -405,29 +410,13 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        width: 190px;
+    }
+
+    button:hover{
+        opacity: 70%;
     }
     
-    #avatar-selection button {
-        align-content: center;
-        background-image: url('images/button.png');
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position-x: center;
-        border: none;
-        padding: 30px 60px 30px 60px;
-        margin: 5px 15px;
-        border-radius: 15px;
-        cursor: pointer;
-        font-size: 1em;
-        min-width: 190px;
-        max-height: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-
-
     input[type="text"] {
         padding: 10px;
         border: 1px solid #ced4da;
@@ -468,26 +457,6 @@
         color: #d32f2f;
         border: 1px solid #ffcdd2;
     }
-
-    #submit_button {
-        align-content: center;
-        background-image: url('images/submit.png');
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position-x: center;
-        border: none;
-        padding: 30px 60px 30px 60px;
-        margin: 5px 15px;
-        border-radius: 15px;
-        cursor: pointer;
-        font-size: 1.4em;
-        min-width: 190px;
-        max-height: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
 
     #avatar-container {
         display: flex;
@@ -537,24 +506,7 @@
         padding: 10px 20px;
         border-radius: 35px;
     }
-    #mainMenu-buttons button{
-        align-content: center;
-        background-image: url('images/button.png');
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position-x: center;
-        border: none;
-        padding: 30px 60px 30px 60px;
-        margin: 5px 15px;
-        border-radius: 15px;
-        cursor: pointer;
-        font-size: 1em;
-        min-width: 190px;
-        max-height: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+    
     #mood-container form {
         display: flex;
         flex-direction: column;
@@ -586,7 +538,7 @@
         
     }
   
-    exercises{
+    .exercises{
         display: flex;
         flex-direction: column;
         align-items: center;
