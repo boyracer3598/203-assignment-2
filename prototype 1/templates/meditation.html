@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mental Health Exercises</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercises</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+       <div class="exercises">
+            <h1>Meditation</h1>
+            <h2>mindful Meditation</h2>
+            <p>mindfullness Meditation is when you focus on your senors intensely and the feeling you are feeling at the current moment</p>
+            <img  src="{{ url_for('static', filename='images/mindfulMeditation.png') }}" alt="Meditation Exercise" class="exercise-image">
+            <button  class="exercise-button" onclick="window.location.href='{{ url_for('exercise') }}'">Back to Exercises</button>
+        </div>
+        
+    </body>
+</html>
