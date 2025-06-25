@@ -60,12 +60,36 @@ def index():
             return render_template("index.html", message=message)
 
         session['current_user'] = user['name']
+        # add one to the logins column in the database for the current user
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute("UPDATE accounts SET logins = logins + 1 WHERE name = ?", (user['name'],))
+        conn.commit()
+        conn.close()
+        print(f"User {user['name']} logged in successfully.")
         #redirect to another page
         return redirect(url_for('greet'))
 
     else:
         message = ""
     return render_template("index.html", message=message)
+
+def get_average_mood():
+    #select all the moods for the mood_logs table from the current user
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT mood FROM mood_logs WHERE account_id = (SELECT id FROM accounts WHERE name = ?)", (session.get('current_user', None),))
+    moods = cursor.fetchall()
+    conn.close()
+    if not moods:
+        return "No mood data available."
+    mood_values = {'happy': 4, 'excited' : 5, 'neutral': 3, 'sad': 2, 'angry': 1}
+    total_score = 0
+    for mood in moods:
+        total_score += mood_values.get(mood['mood'], 0)
+    average_score = total_score / len(moods)
+    return average_score
+    
 
 @app.route('/greet', methods=['GET', 'POST'])
 def greet():
@@ -106,6 +130,141 @@ def login():
         
 
     return render_template("login.html", message="")
+
+
+@app.route("/trackmood", methods=["GET", "POST"])
+def track_mood():
+    #check if there are any mood logs in the database for the current user, if not then set the average mood to 0
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT COUNT(*) FROM mood_logs WHERE account_id = (SELECT id FROM accounts WHERE name = ?)", (session.get('current_user', None),))
+    count = cursor.fetchone()[0]
+    conn.close()
+    if count == 0:
+        print("No mood logs found for the current user.")
+        return render_template("trackmood.html", average_mood=0, moveleft=0, mood_logs=[], mile1=False, mile2=False, mile3=False, mile4=False)
+    current_mood_average = get_average_mood()
+    average_score = current_mood_average
+    print(f"Average Mood Score: {average_score}")
+    if average_score > 4:
+        mood_translations = "excited"
+    elif average_score > 3:
+        mood_translations = "happy"  
+    elif average_score > 2:
+        mood_translations = "neutral"
+    elif average_score > 1:
+        mood_translations = "sad"
+    else:
+        mood_translations = "angry"
+    # calculate how far the user needs to move left based on the average score
+    moveleft = 150 * (5 - average_score)
+
+    # send the mood logs to the trackmood.html page
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM mood_logs WHERE account_id = (SELECT id FROM accounts WHERE name = ?)", (session.get('current_user', None),))
+    mood_logs = cursor.fetchall()
+    conn.close()
+    print(f"Mood Logs: {mood_logs}")
+
+    #get total amount of mood logs
+    total_mood_logs = len(mood_logs)
+    if total_mood_logs > 0:
+        #add 10 points to the database points column of the current user
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute("UPDATE accounts SET points = points + 10 WHERE name = ?", (session.get('current_user', None),))
+        #set mile1 in the database to 1 if it is 0
+        cursor.execute("UPDATE accounts SET mile1 = 1 WHERE name = ? AND mile1 = 0", (session.get('current_user', None),))
+
+        conn.commit()
+        conn.close()
+        print(f"Points added to user {session.get('current_user', None)}")
+    print(f"Total Mood Logs: {total_mood_logs}")
+    # if there are no mood logs, set the mood logs to an empty list
+    if not mood_logs:
+        mood_logs = []
+    # if the user is not logged in, redirect to the login page
+    if not session.get('current_user'):
+        flash("You must be logged in to track your mood.")
+        return redirect(url_for('login'))
+    
+    # check if mile1 is 1, if it is then set milestone1 to True
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT mile1 FROM accounts WHERE name = ?", (session.get('current_user', None),))
+    mile1 = cursor.fetchone()
+    conn.close()
+    if mile1 and mile1['mile1'] == 1:
+        milestone1 = True
+    else:
+        milestone1 = False
+
+    # check if mile2 is 1, if it is then set milestone2 to True
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT mile2 FROM accounts WHERE name = ?", (session.get('current_user', None),))
+    mile2 = cursor.fetchone()
+    conn.close()
+    if mile2 and mile2['mile2'] == 1:
+        milestone2 = True
+    else:
+        milestone2 = False
+
+    # check if mile3 is 1, if it is then set milestone3 to True
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT mile3 FROM accounts WHERE name = ?", (session.get('current_user', None),))
+    mile3 = cursor.fetchone()
+    conn.close()
+    if mile3 and mile3['mile3'] == 1:
+        milestone3 = True
+    else:
+        milestone3 = False
+
+    #check if the user has excercised, if they have then set milestone4 to True
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT excerised FROM accounts WHERE name = ?", (session.get('current_user', None),))
+    excerised = cursor.fetchone()
+    conn.close()
+    if excerised and excerised['excerised'] == 1:
+        milestone4 = True
+        #set mile4 to 1 in the database if it is 0 for the current user
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute("UPDATE accounts SET mile4 = 1 WHERE name = ? AND mile4 = 0", (session.get('current_user', None),))
+        conn.commit()
+        conn.close()
+        print("Mile4 set to 1 for user:", session.get('current_user', None))
+    else:
+        milestone4 = False
+
+    # check if mile4 is 1, if it is then set milestone4 to True
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT mile4 FROM accounts WHERE name = ?", (session.get('current_user', None),))
+    mile4 = cursor.fetchone()
+    conn.close()
+    if mile4 and mile4['mile4'] == 1:
+        milestone4 = True
+    else:
+        milestone4 = False
+
+    #check if the user has logged in at least 3 times, if they have then set milestone 3 to True
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT logins FROM accounts WHERE name = ?", (session.get('current_user', None),))
+    logins = cursor.fetchone()
+    conn.close()
+    if logins and logins['logins'] >= 3:
+        milestone3 = True
+    else:
+        milestone3 = False
+    
+
+    # send the current mood average to the trackmood.html page
+    return render_template("trackmood.html", average_mood=current_mood_average, moveleft=moveleft, mood_logs=mood_logs, mile1=milestone1, mile2=milestone2, mile3=milestone3, mile4=milestone4)
 
 # game stuff
 # for games
@@ -157,6 +316,38 @@ def mood():
             return render_template('mood.html')
         else:
             moodLog.append({'date':get_date(),'mood': mood, 'comment': moodComment})
+            # add the mood to the database with the id number of the user
+            # get the current user from the session
+            current_user = session.get('current_user', None)
+            if not current_user:
+                flash("You must be logged in to log your mood.")
+                return redirect(url_for('login'))
+            conn = get_db_connection()
+            cursor = conn.cursor()
+            #get the id of the current user
+            cursor.execute("SELECT id FROM accounts WHERE name = ?", (current_user,))
+            user = cursor.fetchone()
+            if not user:
+                flash("User not found.")
+                return redirect(url_for('login'))
+            current_user_id = user['id']
+            #get the current user email
+            cursor.execute("SELECT email FROM accounts WHERE name = ?", (current_user,))
+            user_email = cursor.fetchone()
+            if not user_email:
+                flash("User email not found.")
+                return redirect(url_for('login'))
+            current_user_email = user_email['email']
+            # insert the mood log into the database
+            print(f"Inserting mood log for user {current_user} with email {current_user_email}")
+            # create a new row in the mood_logs table
+            # mood_logs table has account_id, name, email, mood, timestamp, comment
+
+            cursor.execute('INSERT INTO mood_logs (account_id, name, email, mood, comment) VALUES (?, ?, ?, ?, ?)', (current_user_id, current_user, current_user_email, mood, moodComment))
+            # commit the changes to the database
+            conn.commit()
+
+
             print(f"Mood log: {moodLog}") 
             # temp name for now
             name= 'User'
@@ -172,7 +363,17 @@ def mood():
 @app.route('/avatar', methods=['GET', 'POST'])
 def avatar():
     if request.method == 'POST':
+
+        # set mile2 to 1 in the database if it is 0 for the current user
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute("UPDATE accounts SET mile2 = 1 WHERE name = ? AND mile2 = 0", (session.get('current_user', None),))
+        conn.commit()
+        conn.close()
+        print("Mile2 set to 1 for user:", session.get('current_user', None))
         
+        
+
         # get the shirt color
         shirt_color = request.form.get('shirt_color')
         print("Shirt Color:", shirt_color)
@@ -213,6 +414,34 @@ def avatar():
         return redirect(url_for('avatar', shirt_color=shirt_color, pants_type=pants_type, shoe_type=shoe_type, hair_type=hair_type))
     return render_template('avatar.html', shirt_color=request.args.get('shirt_color', 'default.png'), pants_type=request.args.get('pants_type', 'default.png'), shoe_type=request.args.get('shoe_type', 'shoe2.png'), hair_type=request.args.get('hair_type', 'default.png'))
 
+# page for mental health exercises
+@app.route('/exercise', methods=['GET', 'POST'])
+def exercise():
+    # set excercised to 1 in the database if it is 0 for the current user
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("UPDATE accounts SET excerised = 1 WHERE name = ? AND excerised = 0", (session.get('current_user', None),))
+    conn.commit()
+    conn.close()
+    print("Exercised set to 1 for user:", session.get('current_user', None))
+
+    return render_template('exercise.html')
+
+@app.route('/exercise/meditation', methods=['GET', 'POST'])
+def meditation():
+    return render_template('meditation.html')
+
+@app.route('/exercise/breathing', methods=['GET', 'POST'])
+def breathing():
+    return render_template('breathing.html')
+
+@app.route('/exercise/grounding', methods=['GET', 'POST'])
+def grounding():
+    return render_template('grounding.html')
+
+@app.route('/exercise/journaling', methods=['GET', 'POST'] )
+def journaling():
+    return render_template('journaling.html')
 
 #run the application
 if __name__ == '__main__':

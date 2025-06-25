@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mental Health Exercises</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercises</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+       <div class="exercises">
+            <h1>Breathing</h1>
+            <p>Breathing is something that can be done in very little amount of time</p>
+            <h2>Pursed lip breathing</h2>
+            <p>Be relaxed<br> keep your mouth closed, slowly inhale through your nose<br> shape your lips like going to whistle<br>exhale slowly though your mouth</p>
+            <img src="{{ url_for('static', filename='images/pursedLipBreathing.png') }}" alt="Breathing Exercise" class="exercise-image">
+            <button class="exercise-button" onclick="window.location.href='{{ url_for('exercise') }}'">Back to Exercises</button>
+        </div>
+    </body>
+</html>
