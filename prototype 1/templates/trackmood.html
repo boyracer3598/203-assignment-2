@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mood tracking</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Flask App</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+        
+    </head>
+    <body>
+        
+        <div id="trackmood-container">
+            <h1>Track your mood</h1>
+            
+                <h2>lets see how you've been feeling</h2>
+
+                <div id="mood-tracker">
+                    <div id = "average mood">
+                        <h2>Average Mood</h2>
+                        <p>{{ average_mood }}</p>
+
+                        <div id="mood_line_container">
+                            <img id="icon" src="{{ url_for('static', filename='images/icon.png') }}" alt="Icon" style="padding-left: {{ moveleft }}px;">
+                            <img id="mood_line" src="{{ url_for('static', filename='images/mood_line.png') }}" alt="Mood Image">
+                        <button class="exercise-button" onclick="window.location.href='{{ url_for('greet') }}'">Back</button>
+                        </div>
+
+                    <div>
+                        <h2>Mood Logs</h2>
+                        <ul id="mood-logs">
+                            {% if mood_logs|length == 0 %}
+                                <li>No mood logs available.</li>
+                            {% endif %}
+                            {% for log in mood_logs %}
+                                <li>{{ log.mood }}, {{ log.comment }}: {{ log.timestamp }}</li>
+                            {% endfor %}
+                        </ul>
+
+                    </div>
+
+                        
+                        
+                    </div>
+                </div>
+        </div>
+                
+            
+    </body>

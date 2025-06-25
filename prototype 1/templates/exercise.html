@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mental Health Exercises</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercises</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+       <div id="exercise-container">
+            <h1>self care</h1>
+            <h2>Exercises</h2>
+            <div class="exercise-list">
+                <form action="/exercise/meditation" method="post">
+                    <button type="submit">Meditation</button>
+                </form>
+                <form action="/exercise/breathing" method="post">
+                    <button type="submit">Breathing</button>
+                </form>
+                <form action="/exercise/journaling" method="post">
+                    <button type="submit">Journaling</button>
+                </form>
+                <form action="/exercise/grounding" method="post">
+                    <button type="submit">Grounding</button>
+                </form>
+                <form action="/greet" method="post">
+                    <button type="submit">Back</button>
+                </form>
+
+            </div>>
+        </div>
+        
+    </body>
+</html>

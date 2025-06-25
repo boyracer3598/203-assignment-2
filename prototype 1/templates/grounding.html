@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mental Health Exercises</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercises</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+       <div class="exercises">
+            <h1>Grounding</h1>
+            <h2>Benefits of grounding</h2>
+            <p>
+                Grounding helps pull way from negative or unwanted feeling or emotions
+                <br><br>
+                1.putting your hands in water, focus on the temperature of the water
+                <img src="{{ url_for('static', filename='images/water.png') }}"  class="exercise-image">
+                <br>
+                2.pick up or touch an object, focus on the object focus on the texture,weight, and shape
+                <img src="{{ url_for('static', filename='images/objects.png') }}"  class="exercise-image">
+                <br>
+                3.breathing, focus on how your breath feels, the temperature of the air, and the sound of your breath
+                <img src="{{ url_for('static', filename='images/pursedLipBreathing.png') }}"  class="exercise-image">
+                <br>
+                4.Enjoy food or drink, savor every bite or sip, focus on the taste, texture, and smell
+                <img src="{{ url_for('static', filename='images/foodDrink.png') }}"  class="exercise-image">
+            </p>
+            <button  class="exercise-button" onclick="window.location.href='{{ url_for('exercise') }}'">Back to Exercises</button>
+        </div>
+        
+    </body>
+</html>
