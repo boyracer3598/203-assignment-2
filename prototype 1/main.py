@@ -412,7 +412,7 @@ def avatar():
 
         #send the shirt color to the link
         return redirect(url_for('avatar', shirt_color=shirt_color, pants_type=pants_type, shoe_type=shoe_type, hair_type=hair_type))
-    return render_template('avatar.html', shirt_color=request.args.get('shirt_color', 'default.png'), pants_type=request.args.get('pants_type', 'default.png'), shoe_type=request.args.get('shoe_type', 'shoe2.png'), hair_type=request.args.get('hair_type', 'default.png'))
+    return render_template('avatar.html', shirt_color=request.args.get('shirt_color', 'shirt1.png'), pants_type=request.args.get('pants_type', 'pants1.png'), shoe_type=request.args.get('shoe_type', 'shoe2.png'), hair_type=request.args.get('hair_type', 'hair2.png'))
 
 # page for mental health exercises
 @app.route('/exercise', methods=['GET', 'POST'])
@@ -442,6 +442,17 @@ def grounding():
 @app.route('/exercise/journaling', methods=['GET', 'POST'] )
 def journaling():
     return render_template('journaling.html')
+
+
+#logout route
+@app.route('/logout', methods=['GET', 'POST'])
+def logout():
+    # clear the session
+    session.clear()
+    flash("You have been logged out.")
+    print("User logged out.")
+    # redirect to the index page
+    return redirect(url_for('index'))
 
 #run the application
 if __name__ == '__main__':

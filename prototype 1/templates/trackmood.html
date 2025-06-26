@@ -28,37 +28,60 @@
                         </div>
                     </div>
 
-                    <div>
-                        <h2>Milestones</h2>
-                        <ul id="milestones">
-                            <h3>Log your first mood</h3>
-                            <p1>{{ mile1 }}</p1>
-                            <h3>customize your avatar</h3>
-                            <p1>{{ mile2 }}</p1>
-                            <h3>Login to your account 3 times</h3>
-                            <p1>{{ mile3 }}</p1>
-                            <h3>do an excerise</h3>
-                            <p1>{{ mile4 }}</p1>
+                    <div id="milestones">
+                        <details>
+                            <summary>Milestones</summary>
+                            <ul>
+                                <h3>Log your first mood</h3>
+                                {% if mile1 %}
+                                    <img src="{{ url_for('static', filename='images/reward.png') }}" alt="Milestone 1" style="width: 50px; height: 50px;">
+                                {% else %}
+                                <img src="{{ url_for('static', filename='images/reward.png') }}" alt="Milestone 1" style="width: 50px; height: 50px; opacity: 0.5;">
+                                <p1>Not yet achieved</p1>
+                                {% endif %}
+                                
+                                <h3>Customize your avatar</h3>
+                                {% if mile2 %}
+                                    <img src="{{ url_for('static', filename='images/reward.png') }}" alt="Milestone 2" style="width: 50px; height: 50px;">
+                                {% else %}
+                                    <img src="{{ url_for('static', filename='images/reward.png') }}" alt="Milestone 2" style="width: 50px; height: 50px; opacity: 0.5;">
+                                    <p1>Not yet achieved</p1>
+                                {% endif %}
+                                
+                                <h3>Login to your account 3 times</h3>
+                                {% if mile3 %}
+                                    <img src="{{ url_for('static', filename='images/reward.png') }}" alt="Milestone 3" style="width: 50px; height: 50px;">
+                                {% else %}
+                                    <img src="{{ url_for('static', filename='images/reward.png') }}" alt="Milestone 3" style="width: 50px; height: 50px; opacity: 0.5;">
+                                    <p1>Not yet achieved</p1>
+                                {% endif %}
+
+                                <h3>Do an exercise</h3>
+                                {% if mile4 %}
+                                    <img src="{{ url_for('static', filename='images/reward.png') }}" alt="Milestone 4" style="width: 50px; height: 50px;">
+                                {% else %}
+                                    <img src="{{ url_for('static', filename='images/reward.png') }}" alt="Milestone 4" style="width: 50px; height: 50px; opacity: 0.5;">
+                                    <p1>Not yet achieved</p1>
+                                {% endif %}
+                                
                         </ul>
                     </div>
 
-                    <div>
+                    <div id="mood-logs">
                         <h2>Mood Logs</h2>
-                        <ul id="mood-logs">
+                        <div id="mood-logs-inter">
+                            <ul>
                             {% if mood_logs|length == 0 %}
                                 <li>No mood logs available.</li>
                             {% endif %}
                             {% for log in mood_logs %}
                                 <li>{{ log.mood }}, {{ log.comment }}: {{ log.timestamp }}</li>
                             {% endfor %}
-                        </ul>
-
-                    </div>
-
-                        
-                        
-                    </div>
+                            </ul>
+                        </div>
+                    </div> 
                 </div>
+            </div>
         </div>
                 
             

@@ -275,6 +275,48 @@
         margin: 20px auto;
     }
 
+
+     #mood-logs{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 20px auto;
+        width: 50%;
+        font-size: 1.5em;
+        background-color: rgb(233, 233, 233);
+        border-radius: 10px;
+        
+    }
+
+    #mood-logs-inter {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        margin: 20px auto;
+        width: 80%;
+        border-radius: 10px;
+        height: 200px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+
+     #milestones{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 20px auto;
+        width: 80%;
+        font-size: 1.5em;
+        background-color: rgb(233, 233, 233);
+        border-radius: 10px;
+       
+    }
+
+
+
 }
 
 
@@ -555,13 +597,39 @@
     #mood-logs{
         display: flex;
         flex-direction: column;
-        align-items: center;
+         align-items: center;
         justify-content: center;
         margin: 20px auto;
         width: 50%;
         font-size: 1.5em;
         background-color: rgb(233, 233, 233);
         border-radius: 10px;
+        
+    }
+
+    #mood-logs-inter {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        margin: 20px auto;
+        width: 80%;
+        height: 200px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+
+    #milestones{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 20px auto;
+        width: 80%;
+        font-size: 1.5em;
+        background-color: rgb(233, 233, 233);
+        border-radius: 10px;
+       
     }
 
 }
