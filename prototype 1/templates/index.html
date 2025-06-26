@@ -21,16 +21,18 @@
         <h1>Login</h1>
         <p>Please enter your details to log in.</p>
 
-        <form method="POST" id="login-form">
-            <label for="name">Name:</label><br>
-            <input type="text" id="name" name="name"><br><br>
-            <label for="password">password:</label><br>
-            <input type="password" id="password" name="password"><br><br>
-            <label for="email">Email:</label><br>
-            <input type="text" id="email" name="email"></label><br><br>
-            <button id="submit_button" type="submit"></button>
-
-            <p>Don't have an account? <a href="{{ url_for('login') }}">Register here</a></p>
-        </form>
+        <div class="login-form">
+            <form method="POST" id="login-form">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name"><br><br>
+                <label for="password">password:</label><br>
+                <input type="password" id="password" name="password"><br><br>
+                <label for="email">Email:</label><br>
+                <input type="text" id="email" name="email"></label><br><br>
+                <button id="submit_button" type="submit">Submit</button>
+                <p>Don't have an account? <a href="{{ url_for('login') }}">Register here</a></p>
+            </form>   
+        </div>
+        
     </body>
 </html>

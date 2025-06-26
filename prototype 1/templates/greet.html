@@ -8,17 +8,28 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     </head>
     <body>
-        <h1>Welcome {{CurrentUser}}</h1>
-        <div id="mainMenu-buttons">
-            <form action="/games" method="get">
-                <button type="submit">play fidgets</button>
-            </form>
-            <form action="/mood" method="get">
-                <button type="submit">Log your mood</button>
-            </form>
-            <form action="/avatar" method="get">
-                <button type="submit">Avatar</button>
-            </form>
+        <div id="greet-container">
+            <h1>Welcome {{CurrentUser}}</h1>
+            <div id="mainMenu-buttons">
+                <form action="/games" method="get">
+                    <button type="submit">play fidgets</button>
+                </form>
+                <form action="/mood" method="get">
+                    <button type="submit">Log your mood</button>
+                </form>
+                <form action ="/trackmood" method="get">
+                    <button type="submit">Track your mood</button>
+                </form>
+                <form action="/avatar" method="get">
+                    <button type="submit">Avatar</button>
+                </form>
+                <form action="/exercise" method="get">
+                    <button type="submit">Self Care</button>
+                </form>
+                <form action="/logout" method="post">
+                    <button type="submit">Logout</button>
+                </form>
+            </div>
         </div>
            
         
